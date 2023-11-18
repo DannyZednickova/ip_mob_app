@@ -1,0 +1,24 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>myIpGetModal</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div *ngIf="data">
+    <ion-item> {{ data.ip}} </ion-item>
+    <ion-item> {{ data.city}} </ion-item>
+    <ion-item> {{ data.region}} </ion-item>
+
+  </div>
+
+
+  <ion-button (click)="close()" >
+    Zavři
+  </ion-button>
+
+  <ion-button class="ion-color-danger" (click)="uloz()" >
+    Ulož
+  </ion-button>
+
+</ion-content>

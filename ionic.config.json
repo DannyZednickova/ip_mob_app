@@ -1,0 +1,7 @@
+{
+  "name": "shodan_mob_app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
