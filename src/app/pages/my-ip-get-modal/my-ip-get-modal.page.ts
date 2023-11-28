@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ModalController} from "@ionic/angular";
 import {MyIpService} from "../../service/myIp/my-ip.service";
-import {MyIpInfosService} from "../../service/MyIpInfos/my-ip-infos.service";
+
 
 @Component({
   selector: 'app-my-ip-get-modal',

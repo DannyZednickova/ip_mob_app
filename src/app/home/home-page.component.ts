@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {firstValueFrom, Observable} from "rxjs";
-import {Test} from "../models/test.model";
 import {ModalController} from "@ionic/angular";
 import {MyIpService} from "../service/myIp/my-ip.service";
 
@@ -27,22 +26,11 @@ export class HomePage {
   ) {
 
     this.myIp$ = this.myIp.getMyInfo$("ip");
-    this.fetchData();
     this.infoMyIpJson();
 
   }
 
 
-
-//tohle musim nahradit upravit aby to bylo asynchrone... .subscribe ziskava data
-
-  fetchData() {
-    this.myIp.getMyInfo$("ip").subscribe(data => {
-      // data získaná z requestu předám to proměnné this.data abych je mohl vypsat ve view (nahradím původní objekt uložený v data)
-      this.data = data;
-
-    })
-  }
 
   infoMyIpJson(){
     this.myIp.vsechnyMojeUdaje$().subscribe(result=>{
@@ -51,7 +39,7 @@ export class HomePage {
   }
 
 
-  setting() {
+  showInfoMyIpJson() {
     this.modalCtrl.create({
       component: MyIpGetModalPage
     }).then(modalres => modalres.present())

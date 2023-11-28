@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {MyIpInfosService} from "../service/MyIpInfos/my-ip-infos.service";
+
 import {key} from "ionicons/icons";
 
 @Component({
@@ -9,7 +9,7 @@ import {key} from "ionicons/icons";
 })
 export class Tab3Page {
 
-  constructor(private myIpInfos: MyIpInfosService ) {
+  constructor( ) {
     this.getData();
 
 
