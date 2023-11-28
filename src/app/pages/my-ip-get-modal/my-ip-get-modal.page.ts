@@ -21,7 +21,7 @@ export class MyIpGetModalPage implements OnInit {
 
 
   vypisMojeUdaje(){
-    this.myIp.vsechnyMojeUdaje$().subscribe((data) =>{
+    this.myIp.allOfMyIpDetails$().subscribe((data) =>{
       this.data= data;
     })
   }
@@ -33,6 +33,7 @@ export class MyIpGetModalPage implements OnInit {
   public uloz() {
       console.log(this.data);
     localStorage.setItem(this.data.ip, JSON.stringify(this.data));
+    this.modalCtrl.dismiss();
 
     }
 

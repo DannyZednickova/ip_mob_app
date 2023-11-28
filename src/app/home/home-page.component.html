@@ -1,29 +1,19 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      Your IP
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tvoje Ip je:</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="ion-text-center">
+  <ion-img src="assets/img/map.png" alt="alt" style="width: 20em; margin: 0 auto"></ion-img>
 
-  <div *ngIf="result">
-    <div>{{ result.ip }}</div>
+  <div class="ion-text-center">
+    <ion-text *ngIf="result" class="ion-text-xxl"><h1>{{ result.ip }}</h1></ion-text><br>
+
+    <ion-button (click)="showInfoMyIpJson()">
+      More Data
+    </ion-button>
   </div>
-
-
-
-  <ion-button (click)="showInfoMyIpJson()">
-    Všechna data
-  </ion-button>
-
-
 </ion-content>
-
-

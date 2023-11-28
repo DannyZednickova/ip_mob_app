@@ -3,13 +3,14 @@ import { Component } from '@angular/core';
 import {key} from "ionicons/icons";
 
 @Component({
-  selector: 'app-tab3',
+  selector: 'app-savedIps',
   templateUrl: 'tab3.page.html',
   styleUrls: ['tab3.page.scss']
 })
 export class Tab3Page {
 
   constructor( ) {
+    console.log("adwohdoawhid")
     this.getData();
 
 

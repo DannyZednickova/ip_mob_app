@@ -17,7 +17,7 @@ import {MyIpGetModalPage} from "../pages/my-ip-get-modal/my-ip-get-modal.page";
 export class HomePage {
   data: any = null;
   result:any = null;
-  myIp$: Observable<any>;
+  //myIp$: Observable<any>;
 
 
   constructor(private modalCtrl: ModalController,
@@ -25,7 +25,7 @@ export class HomePage {
 
   ) {
 
-    this.myIp$ = this.myIp.getMyInfo$("ip");
+    //this.myIp$ = this.myIp.getMyInfo$("ip");
     this.infoMyIpJson();
 
   }
@@ -33,7 +33,7 @@ export class HomePage {
 
 
   infoMyIpJson(){
-    this.myIp.vsechnyMojeUdaje$().subscribe(result=>{
+    this.myIp.allOfMyIpDetails$().subscribe(result=>{
       this.result = result;
     })
   }
