@@ -1,21 +1,21 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
+import { ExploreContainerComponentModule } from '../../explore-container/explore-container.module';
 
-import { HomePage } from './home-page.component';
+import { FindIpPage } from './find-ip-page.component';
 
-describe('Tab1Page', () => {
-  let component: HomePage;
-  let fixture: ComponentFixture<HomePage>;
+describe('Tab2Page', () => {
+  let component: FindIpPage;
+  let fixture: ComponentFixture<FindIpPage>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [HomePage],
+      declarations: [FindIpPage],
       imports: [IonicModule.forRoot(), ExploreContainerComponentModule]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(HomePage);
+    fixture = TestBed.createComponent(FindIpPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

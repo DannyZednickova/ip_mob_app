@@ -1,0 +1,38 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Find Ip</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Search an IP</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-searchbar placeholder="Type IP" [(ngModel)]="searchInput" (ionChange)="findIpSearcheBar(searchInput)"></ion-searchbar>
+
+  <!-- Display the result here -->
+  <div *ngIf="result">
+    <ion-card>
+       <ion-item lines="none">
+        <ion-card style="width: 100%;">
+          <ion-card-header>
+            <ion-card-title>IP: {{result.ip}}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-list>
+              <ion-item>
+                <ion-label> {{result.city}}</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label>{{result.region}}</ion-label>
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+      </ion-item>
+    </ion-card>
+  </div>
+</ion-content>

@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Saved Pages</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar placeholder="Search for "></ion-searchbar>
+  <div *ngIf="savedIps$ | async; let ips">
+    <ion-list>
+      <ion-item-sliding *ngFor="let ip of ips; index as i">
+        <ion-item lines="none">
+          <ion-card style="width: 100%;">
+            <ion-card-header>
+              <ion-card-title>{{ip.ip}}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-list>
+                <ion-item>
+                  <ion-label>{{ip.city}}</ion-label>
+                </ion-item>
+                <ion-item>
+                  <ion-label>{{ip.region}}</ion-label>
+                </ion-item>
+              </ion-list>
+            </ion-card-content>
+          </ion-card>
+        </ion-item>
+        <ion-item-options>
+          <ion-item-option color="danger" (click)="deleteIp(i)">
+            Delete
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+  </div>
+</ion-content>

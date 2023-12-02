@@ -36,21 +36,28 @@ export class MyIpGetStorageDataService {
   }
 
   async addToStorage(ip: string, city: string, region: string) {
-    let result = this._adresses.find(function (item) {
-      return ip === item.ip
-    })
+
+    let result = this._adresses.find(item => item.ip === ip);
 
     if (result) {
-      return;
+      return false;
     }
 
-    this._adresses.unshift({ip: ip, city: city, region: region});//dava na zacatek pole...
-    this.AdressesSubject$.next(this._adresses);
-    await Preferences.set({ // promise je objekt, ktery rika "ja ti neco vratim, ale az za chvilku"///
-      key: "adresses",
-      value: JSON.stringify(this._adresses)
-    })
+
+    try {
+      this._adresses.unshift({ip: ip, city: city, region: region});//dava na zacatek pole...
+      this.AdressesSubject$.next(this._adresses);
+      await Preferences.set({ // promise je objekt, ktery rika "ja ti neco vratim, ale az za chvilku"///
+        key: "adresses",
+        value: JSON.stringify(this._adresses)
+      });
+      return true;
+    } catch (error) {
+      // In case of any error, return false
+      return false;
+    }
   }
+
 
   async deleteIp(index: number) {
     this._adresses.splice(index, 1);

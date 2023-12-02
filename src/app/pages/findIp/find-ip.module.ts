@@ -3,9 +3,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FindIpPage } from './find-ip-page.component';
-import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
+import { ExploreContainerComponentModule } from '../../explore-container/explore-container.module';
 
-import { Tab2PageRoutingModule } from './tab2-routing.module';
+import { Tab2PageRoutingModule } from './find-ip-routing.module';
 
 @NgModule({
   imports: [

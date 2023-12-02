@@ -8,7 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {HttpClientModule} from "@angular/common/http";
 
-import {MyIpGetModalPage} from "./pages/my-ip-get-modal/my-ip-get-modal.page";
+import {MyIpGetModalPage} from "./pages/getMyIp-modal/my-ip-get-modal.page";
 
 
 @NgModule({

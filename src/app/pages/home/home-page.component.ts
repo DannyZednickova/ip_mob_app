@@ -1,10 +1,10 @@
 import {Component} from '@angular/core';
 import {firstValueFrom, Observable} from "rxjs";
 import {ModalController} from "@ionic/angular";
-import {MyIpService} from "../service/myIp/my-ip.service";
+import {MyIpService} from "../../service/myIp/my-ip.service";
 
 
-import {MyIpGetModalPage} from "../pages/my-ip-get-modal/my-ip-get-modal.page";
+import {MyIpGetModalPage} from "../getMyIp-modal/my-ip-get-modal.page";
 
 
 
@@ -37,7 +37,7 @@ export class HomePage {
   }
 
 
-  showInfoMyIpJson() {
+  showInfoMyIpModal() {
     this.modalCtrl.create({
       component: MyIpGetModalPage
     }).then(modalres => modalres.present())

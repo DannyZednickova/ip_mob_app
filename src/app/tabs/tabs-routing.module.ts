@@ -9,15 +9,15 @@ const routes: Routes = [
     children: [
       {
         path: 'home',
-        loadChildren: () => import('../home/home.module').then(m => m.Tab1PageModule)
+        loadChildren: () => import('../pages/home/home.module').then(m => m.Tab1PageModule)
       },
       {
         path: 'findIp',
-        loadChildren: () => import('../findIp/tab2.module').then(m => m.Tab2PageModule)
+        loadChildren: () => import('../pages/findIp/find-ip.module').then(m => m.Tab2PageModule)
       },
       {
         path: 'savedIps',
-        loadChildren: () => import('../savedIps/tab3.module').then(m => m.Tab3PageModule)
+        loadChildren: () => import('../pages/savedIps/saved-ips.module').then(m => m.Tab3PageModule)
       },
       {
         path: '',
