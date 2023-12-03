@@ -1,20 +1,12 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 import {ReplaySubject} from "rxjs";
+import {IpAdress} from "../myIpGetStorageData/my-ip-get-storage-data.service";
 import {Preferences} from "@capacitor/preferences";
-
-
-export interface IpAdress {
-  ip: string;
-  city: string;
-  region: string;
-}
 
 @Injectable({
   providedIn: 'root'
 })
-export class MyIpGetStorageDataService {
-
-
+export class FindIpGetStorageService {
   private _adresses: IpAdress[] = []
 
 
@@ -23,16 +15,14 @@ export class MyIpGetStorageDataService {
   get IpAdresses$() {
     return this.AdressesSubject$.asObservable();
   }
-
   constructor() {
     // pokud najdu nejakou value v tech preferences tak ji nastavim do toho adresses a jinak vypise ...neco... :D
-    Preferences.get({key: "saved-my-address"}).then(data => { // takze tohle se ulozi jako capacitor.neco. adress
+    Preferences.get({key: "saved-findIp-address"}).then(data => { // takze tohle se ulozi jako capacitor.neco. adress
       if (!!data.value) {
         this._adresses = JSON.parse((data.value));
       }
       this.AdressesSubject$.next(this._adresses);//next dalsi iterace, verze dalsich dat...
     })
-
   }
 
   async addToStorage(ip: string, city: string, region: string) {
@@ -44,10 +34,11 @@ export class MyIpGetStorageDataService {
     }
 
     try {
-      this._adresses.unshift({ip: ip, city: city, region: region});//dava na zacatek pole...
+      this._adresses.unshift({ ip: ip, city: city, region: region});//dava na zacatek pole...
       this.AdressesSubject$.next(this._adresses);
+      console.log(this._adresses);
       await Preferences.set({ // promise je objekt, ktery rika "ja ti neco vratim, ale az za chvilku"///
-        key: "saved-my-address",
+        key: "saved-findIp-address",
         value: JSON.stringify(this._adresses)
       });
       return true;
@@ -57,13 +48,14 @@ export class MyIpGetStorageDataService {
     }
   }
 
-
   async deleteIp(index: number) {
     this._adresses.splice(index, 1);
     this.AdressesSubject$.next(this._adresses);
     await Preferences.set({ // promise je objekt, ktery rika "ja ti neco vratim, ale az za chvilku"///
-      key: "saved-my-address",
+      key: "saved-findIp-address",
       value: JSON.stringify(this._adresses)
     })
   }
+
+
 }
