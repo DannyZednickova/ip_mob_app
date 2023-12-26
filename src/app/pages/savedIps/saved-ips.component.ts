@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import {key} from "ionicons/icons";
 import {IpAdress, MyIpGetStorageDataService} from "../../service/myIpGetStorageData/my-ip-get-storage-data.service";
 import {Observable} from "rxjs";
+import {FindIpGetStorageService} from "../../service/findIpGetStorage/find-ip-get-storage.service";
 
 @Component({
   selector: 'app-savedIps',
@@ -11,13 +12,20 @@ import {Observable} from "rxjs";
 })
 export class savedIps {
 
-  savedIps$: Observable<IpAdress[]>
+  selectedSegment = 'all';
 
-  constructor(private myIpGetStorageDataService: MyIpGetStorageDataService) {
-    this.savedIps$ = myIpGetStorageDataService.IpAdresses$;
+  visitedIps$: Observable<IpAdress[]>
+  findIps$: Observable<IpAdress[]>
+
+  constructor(private myIpGetStorageDataService: MyIpGetStorageDataService, private findIpGetStorageService:FindIpGetStorageService) {
+    this.visitedIps$ = myIpGetStorageDataService.IpAdresses$;
+    this.findIps$ = findIpGetStorageService.IpAdresses$;
   }
 
-  deleteIp(i:number) {
+  deleteIpVisited(i:number) {
     this.myIpGetStorageDataService.deleteIp(i);
+  }
+  deleteIpFound(i:number) {
+    this.findIpGetStorageService.deleteIp(i);
   }
 }

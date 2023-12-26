@@ -4,35 +4,81 @@
   </ion-toolbar>
 </ion-header>
 
+
+<ion-segment [(ngModel)]="selectedSegment" color="success">
+  <ion-segment-button value="all">
+    <ion-label>All</ion-label>
+  </ion-segment-button>
+  <ion-segment-button value="visited">
+    <ion-label>Visited</ion-label>
+  </ion-segment-button>
+  <ion-segment-button value="found">
+    <ion-label>Found</ion-label>
+  </ion-segment-button>
+</ion-segment>
 <ion-content>
-  <ion-searchbar placeholder="Search for "></ion-searchbar>
-  <div *ngIf="savedIps$ | async; let ips">
+
+  <ng-container *ngIf="selectedSegment === 'visited' || selectedSegment === 'all' ">
+
+  <div *ngIf="visitedIps$ | async; let ips">
     <ion-list>
       <ion-item-sliding *ngFor="let ip of ips; index as i">
-        <ion-item lines="none">
+        <ion-list>
+          <ion-item>
+            <ion-icon aria-hidden="true" name="earth" slot="start"></ion-icon>
+            <ion-label>{{ip.ip}}</ion-label>
+            <ion-badge slot="end" color="success">Visited</ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-icon aria-hidden="true" name="map-outline" slot="start"></ion-icon>
+            <ion-label>{{ip.city}}</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-icon aria-hidden="true" name="locate-outline" slot="start"></ion-icon>
+            <ion-label>{{ip.region}}</ion-label>
+          </ion-item>
 
-          <ion-card style="width: 100%;">
-            <ion-card-header>
-              <ion-card-title>{{ip.ip}}</ion-card-title>
-            </ion-card-header>
-            <ion-card-content>
-              <ion-list>
-                <ion-item>
-                  <ion-label>{{ip.city}}</ion-label>
-                </ion-item>
-                <ion-item>
-                  <ion-label>{{ip.region}}</ion-label>
-                </ion-item>
-              </ion-list>
-            </ion-card-content>
-          </ion-card>
-        </ion-item>
+        </ion-list>
         <ion-item-options>
-          <ion-item-option color="danger" (click)="deleteIp(i)">
+          <ion-item-option color="danger" (click)="deleteIpVisited(i)">
             Delete
           </ion-item-option>
         </ion-item-options>
       </ion-item-sliding>
     </ion-list>
   </div>
+  </ng-container>
+
+
+  <ng-container *ngIf="selectedSegment === 'found' || selectedSegment === 'all' ">
+  <div *ngIf="findIps$ | async; let ips">
+    <ion-list>
+      <ion-item-sliding *ngFor="let ip of ips; index as i">
+        <ion-list>
+          <ion-item>
+            <ion-icon aria-hidden="true" name="earth" slot="start"></ion-icon>
+            <ion-label>{{ip.ip}}</ion-label>
+            <ion-badge slot="end" color="secondary">Found</ion-badge>
+          </ion-item>
+          <ion-item>
+            <ion-icon aria-hidden="true" name="map-outline" slot="start"></ion-icon>
+            <ion-label>{{ip.city}}</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-icon aria-hidden="true" name="locate-outline" slot="start"></ion-icon>
+            <ion-label>{{ip.region}}</ion-label>
+          </ion-item>
+
+        </ion-list>
+        <ion-item-options>
+          <ion-item-option color="danger" (click)="deleteIpFound(i)">
+            Delete
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+  </div>
+  </ng-container>
+
 </ion-content>
+

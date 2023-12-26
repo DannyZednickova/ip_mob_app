@@ -1,20 +1,41 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Your IP Data </ion-title>
+    <ion-title>Your IP Data</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <div *ngIf="data">
-    <ion-item> {{ data.ip}} </ion-item>
-    <ion-item> {{ data.city}} </ion-item>
-    <ion-item> {{ data.region}} </ion-item>
+    <ion-item>
+      <ion-icon aria-hidden="true" name="earth" slot="start"></ion-icon>
+      {{ data.ip}}
+    </ion-item>
+    <ion-item>
+      <ion-icon aria-hidden="true" name="map-outline" slot="start"></ion-icon>
+      {{ data.city}}
+    </ion-item>
+    <ion-item>
+      <ion-icon aria-hidden="true" name="locate-outline" slot="start"></ion-icon>
+      {{ data.region}}
+    </ion-item>
+    <ion-item>
+      <ion-icon aria-hidden="true" name="globe-outline" slot="start"></ion-icon>
+      {{data.country}}
+    </ion-item>
+    <ion-item>
+      <ion-icon aria-hidden="true" name="body-outline" slot="start"></ion-icon>
+      {{data.languages}}
+    </ion-item>
+    <ion-item>
+      <ion-icon aria-hidden="true" name="wallet-outline" slot="start"></ion-icon>
+      {{data.currency}}
+    </ion-item>
 
   </div>
 
-  <ion-button (click)="close()" > Zavři   </ion-button>
-    <ion-button   (click)="saveMyIp()"  >Uložit</ion-button>
-
-
+  <div class="ion-text-center">
+  <ion-button color="success" (click)="close()"> Zavři</ion-button>
+  <ion-button color="success"(click)="saveMyIp()">Uložit</ion-button>
+  </div>
 
 </ion-content>
