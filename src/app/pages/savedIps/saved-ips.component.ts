@@ -12,11 +12,14 @@ import {FindIpGetStorageService} from "../../service/findIpGetStorage/find-ip-ge
 })
 export class savedIps {
 
-  savedIps$: Observable<IpAdress[]>
+  selectedSegment = 'all';
+
+  visitedIps$: Observable<IpAdress[]>
+  findIps$: Observable<IpAdress[]>
 
   constructor(private myIpGetStorageDataService: MyIpGetStorageDataService, findIpGetStorageService:FindIpGetStorageService) {
-    this.savedIps$ = myIpGetStorageDataService.IpAdresses$;
-    this.savedIps$ = findIpGetStorageService.IpAdresses$;
+    this.visitedIps$ = myIpGetStorageDataService.IpAdresses$;
+    this.findIps$ = findIpGetStorageService.IpAdresses$;
   }
 
   deleteIp(i:number) {
