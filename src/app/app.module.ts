@@ -9,11 +9,12 @@ import { AppComponent } from './app.component';
 import {HttpClientModule} from "@angular/common/http";
 
 import {MyIpGetModalPage} from "./pages/getMyIp-modal/my-ip-get-modal.page";
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, FormsModule],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     MyIpGetModalPage, MyIpGetModalPage // Přidejte MyIpSettingPage do providers

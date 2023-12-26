@@ -4,15 +4,23 @@ import {ModalController, ToastController} from "@ionic/angular";
 import {MyIpGetStorageDataService} from "../../service/myIpGetStorageData/my-ip-get-storage-data.service";
 import {FindIpGetStorageService} from "../../service/findIpGetStorage/find-ip-get-storage.service";
 
+
 @Component({
   selector: 'app-findIp',
   templateUrl: 'find-ip-page.component.html',
   styleUrls: ['find-ip-page.component.scss']
 })
+
+
+
 export class FindIpPage {
+
   result: any = null;
   searchInput: string = '';
   toast: HTMLIonToastElement | null = null;
+
+  ipPattern: string = '^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$'; // Regular expression for IP format
+
 
   constructor(
     private findIpService :FindIpService,
@@ -28,6 +36,8 @@ export class FindIpPage {
     })
 
   }
+
+
 
 
   public async saveIp() {

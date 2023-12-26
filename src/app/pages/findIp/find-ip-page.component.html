@@ -6,11 +6,20 @@
 
 
 <ion-content [fullscreen]="true">
-    <ion-searchbar placeholder="Type IP" [(ngModel)]="searchInput" (ionChange)="findIpSearcheBar(searchInput)"></ion-searchbar>
+  <ion-searchbar placeholder="Type IP" [(ngModel)]="searchInput"
+                 (ionChange)="findIpSearcheBar(searchInput)"     [pattern]="ipPattern"
+                 maxlength="15"
+                 #ipInput="ngModel"
+                 ></ion-searchbar>
+
+  <div *ngIf="ipInput.errors?.['pattern'] && ipInput.dirty">
+    Please enter a valid IP address (e.g., 192.168.1.1).
+  </div>
+
 
   <div *ngIf="result">
     <ion-list>
-      <ion-item-sliding >
+      <ion-item-sliding>
         <ion-list>
           <ion-item>
             <ion-icon aria-hidden="true" name="airplane" slot="start"></ion-icon>
@@ -24,13 +33,10 @@
             <ion-icon aria-hidden="true" name="bluetooth" slot="start"></ion-icon>
             <ion-label>{{result.region}}</ion-label>
           </ion-item>
-          <ion-item>
-            <ion-icon aria-hidden="true" name="call" slot="start"></ion-icon>
-            <ion-label>Cellular</ion-label>
-          </ion-item>
+
         </ion-list>
         <ion-item-options>
-          <ion-item-option color="danger" (click)="saveIp()">
+          <ion-item-option color="warning" (click)="saveIp()">
             Save
           </ion-item-option>
         </ion-item-options>

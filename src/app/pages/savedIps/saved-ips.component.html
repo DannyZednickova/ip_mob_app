@@ -5,7 +5,7 @@
 </ion-header>
 
 
-<ion-segment [(ngModel)]="selectedSegment">
+<ion-segment [(ngModel)]="selectedSegment" color="success">
   <ion-segment-button value="all">
     <ion-label>All</ion-label>
   </ion-segment-button>
@@ -25,16 +25,16 @@
       <ion-item-sliding *ngFor="let ip of ips; index as i">
         <ion-list>
           <ion-item>
-            <ion-icon aria-hidden="true" name="airplane" slot="start"></ion-icon>
+            <ion-icon aria-hidden="true" name="earth" slot="start"></ion-icon>
             <ion-label>{{ip.ip}}</ion-label>
-            <ion-badge slot="end">Visited</ion-badge>
+            <ion-badge slot="end" color="success">Visited</ion-badge>
           </ion-item>
           <ion-item>
-            <ion-icon aria-hidden="true" name="wifi" slot="start"></ion-icon>
+            <ion-icon aria-hidden="true" name="map-outline" slot="start"></ion-icon>
             <ion-label>{{ip.city}}</ion-label>
           </ion-item>
           <ion-item>
-            <ion-icon aria-hidden="true" name="bluetooth" slot="start"></ion-icon>
+            <ion-icon aria-hidden="true" name="locate-outline" slot="start"></ion-icon>
             <ion-label>{{ip.region}}</ion-label>
           </ion-item>
 
@@ -56,16 +56,16 @@
       <ion-item-sliding *ngFor="let ip of ips; index as i">
         <ion-list>
           <ion-item>
-            <ion-icon aria-hidden="true" name="airplane" slot="start"></ion-icon>
+            <ion-icon aria-hidden="true" name="earth" slot="start"></ion-icon>
             <ion-label>{{ip.ip}}</ion-label>
-            <ion-badge slot="end" color="warning">Found</ion-badge>
+            <ion-badge slot="end" color="secondary">Found</ion-badge>
           </ion-item>
           <ion-item>
-            <ion-icon aria-hidden="true" name="wifi" slot="start"></ion-icon>
+            <ion-icon aria-hidden="true" name="map-outline" slot="start"></ion-icon>
             <ion-label>{{ip.city}}</ion-label>
           </ion-item>
           <ion-item>
-            <ion-icon aria-hidden="true" name="bluetooth" slot="start"></ion-icon>
+            <ion-icon aria-hidden="true" name="locate-outline" slot="start"></ion-icon>
             <ion-label>{{ip.region}}</ion-label>
           </ion-item>
 
