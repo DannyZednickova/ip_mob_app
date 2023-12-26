@@ -17,12 +17,15 @@ export class savedIps {
   visitedIps$: Observable<IpAdress[]>
   findIps$: Observable<IpAdress[]>
 
-  constructor(private myIpGetStorageDataService: MyIpGetStorageDataService, findIpGetStorageService:FindIpGetStorageService) {
+  constructor(private myIpGetStorageDataService: MyIpGetStorageDataService, private findIpGetStorageService:FindIpGetStorageService) {
     this.visitedIps$ = myIpGetStorageDataService.IpAdresses$;
     this.findIps$ = findIpGetStorageService.IpAdresses$;
   }
 
-  deleteIp(i:number) {
+  deleteIpVisited(i:number) {
     this.myIpGetStorageDataService.deleteIp(i);
+  }
+  deleteIpFound(i:number) {
+    this.findIpGetStorageService.deleteIp(i);
   }
 }
