@@ -8,6 +8,7 @@ const routes: Routes = [
   },
 
 
+
   {
     path: 'getMyIp-modal',
     loadChildren: () => import('./pages/getMyIp-modal/my-ip-get-modal.module').then(m => m.MyIpGetModalPageModule)

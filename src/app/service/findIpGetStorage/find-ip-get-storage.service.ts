@@ -1,7 +1,9 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {ReplaySubject} from "rxjs";
 import {IpAdress} from "../myIpGetStorageData/my-ip-get-storage-data.service";
 import {Preferences} from "@capacitor/preferences";
+import {FormControl, Validators} from '@angular/forms';
+
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +17,7 @@ export class FindIpGetStorageService {
   get IpAdresses$() {
     return this.AdressesSubject$.asObservable();
   }
+
   constructor() {
     // pokud najdu nejakou value v tech preferences tak ji nastavim do toho adresses a jinak vypise ...neco... :D
     Preferences.get({key: "saved-findIp-address"}).then(data => { // takze tohle se ulozi jako capacitor.neco. adress
@@ -25,6 +28,7 @@ export class FindIpGetStorageService {
     })
   }
 
+
   async addToStorage(ip: string, city: string, region: string) {
 
     let result = this._adresses.find(item => item.ip === ip);
@@ -34,7 +38,7 @@ export class FindIpGetStorageService {
     }
 
     try {
-      this._adresses.unshift({ ip: ip, city: city, region: region});//dava na zacatek pole...
+      this._adresses.unshift({ip: ip, city: city, region: region});//dava na zacatek pole...
       this.AdressesSubject$.next(this._adresses);
       console.log(this._adresses);
       await Preferences.set({ // promise je objekt, ktery rika "ja ti neco vratim, ale az za chvilku"///

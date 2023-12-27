@@ -3,6 +3,7 @@ import {FindIpService} from "../../service/findIp/find-ip.service";
 import {ModalController, ToastController} from "@ionic/angular";
 import {MyIpGetStorageDataService} from "../../service/myIpGetStorageData/my-ip-get-storage-data.service";
 import {FindIpGetStorageService} from "../../service/findIpGetStorage/find-ip-get-storage.service";
+import {FormControl, Validators} from "@angular/forms";
 
 
 @Component({
@@ -31,9 +32,10 @@ export class FindIpPage {
 
   findIpSearcheBar(findIpS: string) {
 
-    this.findIpService.findIpAdresses$(findIpS).subscribe(result => {
-      this.result = result;
-    })
+      this.findIpService.findIpAdresses$(findIpS).subscribe(result => {
+        this.result = result;
+      })
+
 
   }
 
@@ -52,7 +54,9 @@ export class FindIpPage {
     // Create a new toast
     this.toast = await this.toastController.create({
       message: success ? 'Ip was saved' : 'Ip already exists...',
-      duration: 1000
+      duration: 1000,
+      color: 'warning', // Example of using color
+      position: 'bottom',
     });
 
     // Listen for the dismiss event to nullify the toast reference

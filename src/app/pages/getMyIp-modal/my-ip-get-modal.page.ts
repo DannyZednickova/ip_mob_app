@@ -48,7 +48,9 @@ export class MyIpGetModalPage implements OnInit {
     // Create a new toast
     this.toast = await this.toastController.create({
       message: success ? 'Ip was saved' : 'Ip already exists...',
-      duration: 1000
+      duration: 1000,
+      color: 'warning', // Example of using color
+      position: 'bottom',
     });
 
     // Listen for the dismiss event to nullify the toast reference

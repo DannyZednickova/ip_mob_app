@@ -11,12 +11,126 @@
 
   <div class="ion-text-center">
     <ion-text *ngIf="result" class="ion-text-xxl"><h1>{{ result.ip }}</h1></ion-text><br>
-
+    <ion-text *ngIf="result" class="ion-text-xxl"><h2>{{ result.city }}</h2></ion-text><br>
     <ion-button color="success" (click)="showInfoMyIpModal()">
       More Data
     </ion-button>
   </div>
-</ion-content>
+
+
+  <!-- Nějaký popis se vždy hodí -->
+  <div class="ion-padding">
+    <ion-text>Actual weather in {{weather?.name}} is {{weather?.weather[0].description}}</ion-text>
+  </div>
+
+    <ion-list>
+      <ion-item>
+
+        <ion-icon aria-hidden="true" name="thermometer-outline" slot="start"></ion-icon>
+        <ion-label>Feels like</ion-label>
+        <ion-note slot="end">{{weather?.main.feels_like}} ℃</ion-note>
+      </ion-item>
+      <ion-item>
+        <ion-icon aria-hidden="true" name="thermometer-outline" slot="start"></ion-icon>
+        <ion-label>Actual temperature</ion-label>
+
+        <ion-note slot="end" color="dark">{{weather?.main.temp}} ℃</ion-note>
+      </ion-item>
+      <ion-item>
+        <ion-icon aria-hidden="true" name="thermometer-outline" slot="start"></ion-icon>
+        <ion-label>Max temperature</ion-label>
+        <ion-note slot="end" color="warning">{{weather?.main.temp_max}} ℃</ion-note>
+      </ion-item>
+      <ion-item>
+        <ion-icon aria-hidden="true" name="thermometer-outline" slot="start"></ion-icon>
+        <ion-label>Min temperature</ion-label>
+        <ion-note slot="end" color="primary">{{weather?.main.temp_min}} ℃</ion-note>
+      </ion-item>
+    </ion-list>
+
+
+    <ion-row>
+      <ion-col class="ion-no-padding" size="6">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>
+              <ion-icon name="sunny-outline"></ion-icon>
+              <span>Sunset</span>
+            </ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+
+            {{weather?.sys.sunset | date: "hh:mm"}}
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col class="ion-no-padding" size="6">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>
+              <ion-icon name="moon-outline"></ion-icon>
+              <span>Sunrise</span>
+            </ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            {{weather?.sys.sunrise | date: "hh:mm"}}
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-no-padding" size="6">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>
+              <ion-icon name="compass-outline"></ion-icon>
+              <span>Wind</span>
+            </ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content class="ion-no-padding">
+            <ion-list>
+              <ion-item>
+                Deg: {{weather?.wind.deg}}
+              </ion-item>
+              <ion-item>
+                Gust: {{weather?.wind.gust}}
+              </ion-item>
+              <ion-item lines="none">
+                Speed: {{weather?.wind.speed}}
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col class="ion-no-padding" size="6">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>
+              <ion-icon name="water-outline"></ion-icon>
+              <span>Humidity & Pressure</span>
+            </ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content class="ion-no-padding">
+            <ion-list>
+              <ion-item>
+                Humidity: {{weather?.main.humidity}}%
+              </ion-item>
+              <ion-item lines="none">
+                Pressure: {{weather?.main.pressure}} hPa
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-content>
+
+
+
 
 
 
