@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {FindIpService} from "../../service/findIp/find-ip.service";
-import {ModalController, ToastController} from "@ionic/angular";
+import {IonItemSliding, ModalController, ToastController} from "@ionic/angular";
 import {MyIpGetStorageDataService} from "../../service/myIpGetStorageData/my-ip-get-storage-data.service";
 import {FindIpGetStorageService} from "../../service/findIpGetStorage/find-ip-get-storage.service";
 import {FormControl, Validators} from "@angular/forms";
@@ -41,7 +41,6 @@ export class FindIpPage {
 
 
 
-
   public async saveIp() {
     console.log(this.result);
     const success = await this.findIpGetStorageService.addToStorage(this.result?.ip, this.result?.city, this.result?.region);
@@ -65,5 +64,9 @@ export class FindIpPage {
     });
 
     await this.toast.present();
+
+    // Close the sliding item after saving
+
   }
 }
+

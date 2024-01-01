@@ -7,7 +7,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" class="ion-text-center">
-  <ion-img src="assets/img/map.png" alt="alt" style="width: 20em; margin: 0 auto"></ion-img>
+  <ion-img src="assets/img/map-light.jpg" alt="alt" style="width: 20em; margin: 0 auto"></ion-img>
 
   <div class="ion-text-center">
     <ion-text *ngIf="result" class="ion-text-xxl"><h1>{{ result.ip }}</h1></ion-text><br>
@@ -36,16 +36,7 @@
 
         <ion-note slot="end" color="dark">{{weather?.main.temp}} ℃</ion-note>
       </ion-item>
-      <ion-item>
-        <ion-icon aria-hidden="true" name="thermometer-outline" slot="start"></ion-icon>
-        <ion-label>Max temperature</ion-label>
-        <ion-note slot="end" color="warning">{{weather?.main.temp_max}} ℃</ion-note>
-      </ion-item>
-      <ion-item>
-        <ion-icon aria-hidden="true" name="thermometer-outline" slot="start"></ion-icon>
-        <ion-label>Min temperature</ion-label>
-        <ion-note slot="end" color="primary">{{weather?.main.temp_min}} ℃</ion-note>
-      </ion-item>
+
     </ion-list>
 
 
@@ -94,9 +85,6 @@
             <ion-list>
               <ion-item>
                 Deg: {{weather?.wind.deg}}
-              </ion-item>
-              <ion-item>
-                Gust: {{weather?.wind.gust}}
               </ion-item>
               <ion-item lines="none">
                 Speed: {{weather?.wind.speed}}
