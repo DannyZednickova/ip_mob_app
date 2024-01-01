@@ -66,5 +66,6 @@ showWeather(lat:string, lon:string) {
   }
 
 
+    protected readonly Math = Math;
 
 }

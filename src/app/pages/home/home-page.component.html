@@ -28,13 +28,14 @@
 
         <ion-icon aria-hidden="true" name="thermometer-outline" slot="start"></ion-icon>
         <ion-label>Feels like</ion-label>
-        <ion-note slot="end">{{weather?.main.feels_like}} ℃</ion-note>
+        <ion-note slot="end">{{Math.round(weather?.main.feels_like)}} ℃</ion-note>
       </ion-item>
       <ion-item>
         <ion-icon aria-hidden="true" name="thermometer-outline" slot="start"></ion-icon>
         <ion-label>Actual temperature</ion-label>
 
-        <ion-note slot="end" color="dark">{{weather?.main.temp}} ℃</ion-note>
+        <ion-note slot="end" color="dark">{{Math.round(weather?.main.temp)}} ℃</ion-note>
+
       </ion-item>
 
     </ion-list>
@@ -84,10 +85,10 @@
           <ion-card-content class="ion-no-padding">
             <ion-list>
               <ion-item>
-                Deg: {{weather?.wind.deg}}
+                Deg: {{weather?.wind.deg}} &deg;
               </ion-item>
               <ion-item lines="none">
-                Speed: {{weather?.wind.speed}}
+                Speed: {{weather?.wind.speed}} m/s
               </ion-item>
             </ion-list>
           </ion-card-content>
@@ -105,7 +106,7 @@
           <ion-card-content class="ion-no-padding">
             <ion-list>
               <ion-item>
-                Humidity: {{weather?.main.humidity}}%
+                Humidity: {{weather?.main.humidity}} %
               </ion-item>
               <ion-item lines="none">
                 Pressure: {{weather?.main.pressure}} hPa
